@@ -4,7 +4,7 @@ const Tours = ({ tours }) => {
   return (
     <div className="tour">
       {tours.map((tour) => {
-        return <Tours key={tour.id} {...tour} />;
+        return <Tour key={tour.id} {...tour} />;
       })}
     </div>
   );
