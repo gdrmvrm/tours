@@ -45,6 +45,7 @@ const App = () => {
     <main>
       <section>
         <h2 className="title">Our Tours</h2>
+        <div className="title-underline"></div>
         <Tours tours={tours} removeTour={removeTour} />
       </section>
     </main>
