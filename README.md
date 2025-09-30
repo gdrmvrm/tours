@@ -1,39 +1,54 @@
-## Figma URL
+## Tour Listing App
 
-[Tours](https://www.figma.com/file/OnLoM3AzBFaHzSc2iolJS0/Tours?node-id=0%3A1&t=wiRXOlTLN5ehekYI-1)
+A simple React application that fetches and displays a list of travel tours. Users can explore tour details, remove individual tours, and re-fetch the list when needed.
 
-## Steps
+### Features
 
-#### Setup
+- Fetch and display tours from a remote API
+- Show a loading spinner while data is being fetched
+- Expand/collapse long tour descriptions with a "Read More" button
+- Remove individual tours from the list
+- Re-fetch all tours with a single click
 
-First create - three components (Tours, Tour, and Loading), you can create three separate files in your project directory: Tours.jsx, Tour.jsx, and Loading.jsx. In each of these files, you will define a React functional component that returns JSX code for rendering the respective component.
+### Component Structure
 
-#### Fetch Tours
+#### App.jsx
 
-The Tours component will be responsible for rendering a list of Tour components. In App.jsx, you will fetch the tours data from a URL using the fetch API. Before the data is loaded, you should show a loading spinner or message, which can be implemented using the Loading component.
+- Fetches tours data from an external URL
+- Displays a loading state while fetching
+- Passes data down to the Tours component
 
-#### Render Tours
+#### Tours.jsx
 
-Once the data is loaded, you can set the state of your component to store the tours data. You can then map over the tours array and render a Tour component for each tour. Each Tour component will receive the tour data as props, including the tour's id, image, info, name, and price.
+- Receives and renders a list of Tour components
+- Handles state updates to remove a tour
+- Contains logic to re-fetch tours
 
-#### Remove Tour
+#### Tour.jsx
 
-To implement the "remove tour" functionality, you can add a button to each Tour component that, when clicked, removes the tour from the list of tours. You can achieve this by updating the state of the Tours component to remove the tour from the tours array.
+- Displays individual tour details (name, image, price, info)
+- Includes:
+- A "Not Interested" button to remove the tour
+- A "Read More" toggle for expanding/collapsing the description
 
-#### Read More
+#### Loading.jsx
 
-To implement the "read more" functionality, you can add a button to each Tour component that, when clicked, expands the description of the tour. You can achieve this by updating the state of the Tour component to toggle a "read more" flag, and conditionally rendering the full description based on the flag.
+- Simple spinner or loading message shown while data is being fetched
 
-#### Re-fetch Tours
+### How it Works
 
-Finally, you can implement a "re-fetch" functionality by adding a button or other user interface element that, when clicked, re-fetches the tours data from the URL and updates the state of the Tours component. You may also want to add a loading state again during the re-fetching process.
+1. On app load, App.jsx fetches tour data and displays a loading state.
+2. Once loaded, Tours.jsx renders a list of Tour components.
+3. Each Tour allows users to:
 
-Overall, the flow of the application should look something like this:
+- Click "Read More" to expand full info
+- Click "Not Interested" to remove the tour from the list
 
-- App.jsx fetches tours data from a URL and sets the state of the Tours component to store the data.
-- The Tours component maps over the tours array and renders a Tour component for each tour.
-- Each Tour component has a "remove tour" button and a "read more" button.When the "remove tour" button is clicked, the Tours component updates its state to remove the tour from the tours array.
+4. If all tours are removed, a "Refresh" button is shown to re-fetch tours.
 
-- When the "read more" button is clicked, the Tour component updates its state to toggle a "read more" flag and conditionally renders the full description.
+### Getting Started
 
-- When the "re-fetch" button is clicked, the Tours component re-fetches the tours data from the URL and updates its state.
+```bash
+npm install
+npm run dev
+```
