@@ -37,6 +37,10 @@ const App = () => {
     setTours(updatedList);
   };
 
+  const onRefetchTours = () => {
+    fetchTours();
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -44,8 +48,19 @@ const App = () => {
   return (
     <main>
       <section>
-        <h2 className="title">Our Tours</h2>
-        <div className="title-underline"></div>
+        {tours.length > 0 ? (
+          <>
+            <h2 className="title">Our Tours</h2>
+            <div className="title-underline"></div>
+          </>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h2 className="title">No Tours Left</h2>
+            <button type="button" className="btn" style={{ marginTop: '2rem' }} onClick={onRefetchTours}>
+              Refetch Tours
+            </button>
+          </div>
+        )}
         <Tours tours={tours} removeTour={removeTour} />
       </section>
     </main>
