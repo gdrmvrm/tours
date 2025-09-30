@@ -32,6 +32,11 @@ const App = () => {
     fetchTours();
   }, []);
 
+  const removeTour = (id) => {
+    let updatedList = tours.filter((tour) => tour.id !== id);
+    setTours(updatedList);
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -40,7 +45,7 @@ const App = () => {
     <main>
       <section>
         <h2 className="title">Our Tours</h2>
-        <Tours tours={tours} />
+        <Tours tours={tours} removeTour={removeTour} />
       </section>
     </main>
   );
